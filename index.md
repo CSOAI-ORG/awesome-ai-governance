@@ -14,6 +14,7 @@ AI agents now hold real reach: email, CRMs, databases, financial systems. Guardr
 - [Agent Identity & Attestation](#agent-identity--attestation)
 - [Observability & Monitoring](#observability--monitoring)
 - [Security Testing](#security-testing)
+- [Fairness & Bias Auditing](#fairness--bias-auditing)
 - [Standards & Specifications](#standards--specifications)
 - [Research Papers](#research-papers)
 - [Industry Reports & Guidance](#industry-reports--guidance)
@@ -135,6 +136,12 @@ AI agents now hold real reach: email, CRMs, databases, financial systems. Guardr
 - [PyRIT](https://github.com/Azure/PyRIT) - Microsoft's Python Risk Identification Toolkit for red-teaming generative AI systems with automated attack strategies.
 - [Snyk Agent Scan](https://github.com/snyk/agent-scan) - Security scanner for AI agents and MCP servers. Detects vulnerabilities in tool configurations, permissions, and data flows.
 
+## Fairness & Bias Auditing
+
+*Toolkits for auditing AI-driven decision systems for algorithmic bias and measuring the effect of mitigation.*
+
+- [Fair Code](https://github.com/yakew7/Fair-Code) - Audits real-world-style AI decision systems (criminal justice, hiring, lending, insurance, welfare, hospital readmission, tenant screening) for algorithmic bias, pairing a biased baseline with a mitigated version and measured before/after fairness metrics.
+
 ## Standards & Specifications
 
 *Protocols, specifications, and regulatory frameworks relevant to agent governance and interoperability.*
@@ -188,6 +195,7 @@ AI agents now hold real reach: email, CRMs, databases, financial systems. Guardr
 - [MITRE ATLAS](https://atlas.mitre.org/) - Adversarial Threat Landscape for AI Systems. Adversary tactics and techniques against AI/ML systems, structured like ATT&CK.
 - [OWASP Agentic AI Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) - OWASP's threat catalog and mitigation strategies for agentic applications.
 - [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) - Top 10 security risks for LLM applications including prompt injection, insecure output handling, and supply chain vulnerabilities.
+- [EU AI Regulation Decoded](https://euaird.vercel.app/) - Practitioner reference mapping EU AI Act obligations to the specific evidence an auditor expects — by role, risk tier, and deadline — with common audit red flags. Includes a free interactive audit-readiness checklist and a CC BY 4.0 machine-readable [obligation-to-evidence dataset](https://github.com/Kroniquedubaboo/eu-ai-act-obligation-evidence-dataset).
 
 ## Talks & Videos
 
