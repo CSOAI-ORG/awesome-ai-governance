@@ -89,6 +89,7 @@ Project support is recognized in [SPONSORS.md](https://governance.agentrust-io.c
 - [CrewAI](https://github.com/crewAIInc/crewAI) - Multi-agent orchestration with role-based agents, task delegation, and configurable guardrails.
 - [Dify](https://github.com/langgenius/dify) - LLM app development platform with content moderation, rate limiting, and annotation logging.
 - [Google Agent Development Kit (ADK)](https://github.com/google/adk-python) - Google's agent framework with safety callbacks, evaluation tools, and multi-agent session management.
+- [Google Sovereign Agent Mesh (SAM)](https://github.com/google/sam) - Apache-2.0 agent-mesh project with cryptographic node identities, authenticated peer connections and packets, discovery, authorization policies, and MCP sidecar routing. The repository states that it is not an officially supported Google product.
 - [Haystack](https://github.com/deepset-ai/haystack) - End-to-end NLP framework with pipeline-based architecture supporting content filtering and validation.
 - [LangChain](https://github.com/langchain-ai/langchain) - Composable framework with callbacks, tracing, and moderation chains for LLM applications.
 - [LangGraph](https://github.com/langchain-ai/langgraph) - Stateful, multi-actor agent framework with human-in-the-loop and persistence built in.
@@ -152,6 +153,7 @@ Project support is recognized in [SPONSORS.md](https://governance.agentrust-io.c
 *Protocols, specifications, and regulatory frameworks relevant to agent governance and interoperability.*
 
 - [Agent-to-Agent Protocol (A2A)](https://github.com/google/A2A) - Google-led open protocol for inter-agent communication, task delegation, and capability discovery.
+- [Universal Commerce Protocol (UCP)](https://github.com/Universal-Commerce-Protocol/ucp) - Open protocol for interoperable agentic commerce, including checkout operations and response-carried request constraints that can narrow what a client is permitted to submit.
 - [ACI/AIP/AJSON](https://github.com/narko4u/aci-spec) - Open standards for agent interoperability and governance: Agent Communication Interface (ACI), Agent Interaction Protocol (AIP), and Agent JSON (AJSON) machine-readable agent manifests for discovery, delegation, and governance.
 - [CoSAI Risk Map v1](https://github.com/cosai-oasis/secure-ai-tooling) - Coalition for Secure AI's component-level risk taxonomy for agentic AI systems: 23 components, 35 controls, 36 risks (including 6 agentic-specific), 10 personas, 8 lifecycle stages. Cross-walks to MITRE ATLAS, NIST AI RMF, STRIDE, OWASP LLM Top 10, ISO 22989, and EU AI Act. Launched June 2026.
 - [CSA Agentic Trust Framework](https://github.com/massivescale-ai/agentic-trust-framework) - Cloud Security Alliance / MassiveScale framework defining 5 Core Elements (Identity, Behavior, Data Governance, Segmentation, Incident Response) with 25 requirements across a 4-tier maturity model (Intern, Junior, Senior, Principal). Public Review Draft v0.9.1 (April 2026). Two conformance tiers: ATF Compatible / ATF Certified.
