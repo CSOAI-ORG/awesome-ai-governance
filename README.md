@@ -1,1 +1,1 @@
-PLACEHOLDER_WILL_REPLACE
+{{file:/tmp/dir-prs/agentrust-readme.md}}
