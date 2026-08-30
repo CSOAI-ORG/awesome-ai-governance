@@ -193,3 +193,64 @@ under the same published contribution criteria.
 - [Practices for Governing Agentic AI Systems](https://openai.com/index/practices-for-governing-agentic-ai-systems/) - OpenAI's whitepaper on governance practices: oversight, monitoring, and containment.
 - [Reflexion: Language Agents with Verbal Reinforcement Learning](https://arxiv.org/abs/2303.11366) - Self-reflective agent architecture with implications for building self-correcting, safer agents.
 - [The Landscape of Emerging AI Agent Architectures](https://arxiv.org/abs/2404.11584) - Survey of agentic architectures with analysis of governance-relevant design patterns.
+- [The Rise and Potential of Large Language Model Based Agents: A Survey](https://arxiv.org/abs/2309.07864) - Survey covering agent construction, applications, and societal implications including safety.
+- [Toolformer: Language Models Can Teach Themselves to Use Tools](https://arxiv.org/abs/2302.04761) - Foundational work on tool-using LLMs, relevant to understanding tool governance requirements.
+- [Towards Autonomous AI Agents: A Safety-First Approach](https://arxiv.org/abs/2501.13649) - Framework for integrating safety constraints into autonomous agent design from the ground up.
+
+## Industry Reports & Guidance
+
+*Practitioner guides, threat models, and industry analyses for agent governance.*
+
+- [AI Agent Incident Register](https://companyscope.io/register) - A numbered public corpus of AI agent incidents, each analysed for the legal duty engaged, who bears liability across the chain (deployer / shared / vendor), and the governance that would have prevented it. Includes a Liability Crosswalk mapping OWASP's agentic Top 10, the NIST AI RMF, Singapore's IMDA framework, and the EU AI Act to each other and to who carries liability. Free to read and cite; CC BY 4.0 machine-readable feed.
+
+- [Singapore AI Governance Readiness Checklist](https://vyrwork.com/tools/singapore-ai-governance-readiness-checklist) - Free evidence-oriented planning checklist translating IMDA's 2026 agentic AI governance dimensions into 24 prompts for risk bounds, accountable ownership, lifecycle technical controls, and end-user responsibility. It is a planning aid, not a certification or compliance score.
+
+- [Preventive vs. Reactive AI Agent Governance](https://penholder.ai/preventive-vs-reactive-ai-agent-governance.html) - Comparison of preventive control (gating an agent's write to a system of record behind human approval before it commits) versus reactive governance (detecting and remediating harmful actions after they have executed), and the trade-offs of each model.
+
+- [Anthropic's Responsible Scaling Policy](https://www.anthropic.com/responsible-scaling-policy) - Framework for responsible AI deployment with AI Safety Levels (ASL) and safety evaluation commitments.
+- [Anthropic: Trustworthy Agents in Practice](https://www.anthropic.com/research/trustworthy-agents) - Anthropic's practical guidance on deploying trustworthy agents: balancing autonomy with human oversight, prompt-injection resistance, and operational safeguards.
+- [CSA AI Safety Initiative](https://cloudsecurityalliance.org/research/working-groups/artificial-intelligence) - Cloud Security Alliance publications on AI safety and security best practices.
+- [Google Secure AI Framework (SAIF)](https://safety.google/cybersecurity-advancements/saif/) - Conceptual framework for securing AI systems across the development and deployment lifecycle.
+- [Microsoft Responsible AI](https://www.microsoft.com/en-us/ai/responsible-ai) - Hub for Microsoft's responsible AI practice: the six principles, the governance structure behind them, and transparency notes for shipped systems. Links out to the Responsible AI Standard itself, which is a separate document.
+- [MITRE ATLAS](https://atlas.mitre.org/) - Adversarial Threat Landscape for AI Systems. Adversary tactics and techniques against AI/ML systems, structured like ATT&CK.
+- [OWASP Agentic AI Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) - OWASP's threat catalog and mitigation strategies for agentic applications.
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) - Top 10 security risks for LLM applications including prompt injection, insecure output handling, and supply chain vulnerabilities.
+- [EU AI Regulation Decoded](https://euaird.vercel.app/) - Practitioner reference mapping EU AI Act obligations to the specific evidence an auditor expects — by role, risk tier, and deadline — with common audit red flags. Includes a free interactive audit-readiness checklist and a CC BY 4.0 machine-readable [obligation-to-evidence dataset](https://github.com/Kroniquedubaboo/eu-ai-act-obligation-evidence-dataset).
+
+## Talks & Videos
+
+*Conference talks, keynotes, and recorded sessions on agent governance, runtime enforcement, and hardware-attested execution. Speaker and venue are listed so the source of each claim is visible.*
+
+- [Agentic AI Is Running Your Infrastructure](https://www.youtube.com/watch?v=1Z_7hvy_-YE) - Mike Bursell, Confidential Computing Consortium. Keynote on what changes when agents operate infrastructure rather than assist people, and where confidential computing sits in that trust model. Confidential Computing Summit 2026.
+- [Agentic Zero Trust: at Rest, in Transit, and at Runtime](https://www.youtube.com/watch?v=x7j0D5VYUhw) - N. Polshakova (Solo.io) and J. Halley (Cisco) on extending zero-trust principles to the agent runtime, not just the network. Confidential Computing Summit 2026.
+- [Building Governed AI Agents with the Agent Governance Toolkit](https://www.youtube.com/watch?v=uDQBqp9Om5s) - Imran Siddique (OPAQUE Systems) walking through AGT's policy enforcement and audit model for enterprise deployments. GenAI Gurus, May 2026.
+- [From Trust to Proof: The Next Generation of AI Agent Governance](https://www.youtube.com/watch?v=uz4absejhHc) - Imran Siddique and Jason Lazarski (OPAQUE Systems) on the gap between controlling an agent and proving you controlled it, and how Agent Manifest, cMCP, and TRACE close it. July 2026.
+- [Governing AI Agents at Runtime: Open Source Zero-Trust with AGT](https://www.youtube.com/watch?v=YtjjoPTN0U8) - Imran Siddique on runtime governance for agents moving from demo to production. Ubuntu Summit 26.04, Canonical.
+- [Governing AI Agents at the Hardware Boundary](https://www.youtube.com/watch?v=z8hOZ77iiJo) - Imran Siddique (OPAQUE Systems) on why software-only enforcement has a structural ceiling and what moving the control point into a TEE buys. Confidential Computing Summit 2026.
+- [NVIDIA Confidential Computing Attestation for Next-Generation AI](https://www.youtube.com/watch?v=vzQVZA7veO0) - R. Nertney and S. Gilson (NVIDIA) on GPU attestation and the evidence it produces for AI workloads. Confidential Computing Summit 2026.
+- [Open Source Friday: Governance for AI Agents](https://www.youtube.com/watch?v=bIioEmT2KEM) - Imran Siddique with GitHub on why prompts are not a control surface, plus the practical side of running a fast-growing governance project in the open. June 2026.
+- [Reliability in AI (Agentic) Systems](https://www.youtube.com/watch?v=jvHZAQdx-LU) - Panel on failure modes, evaluation, and what reliability means for systems that act. Confidential Computing Summit 2026.
+
+## Conferences & Communities
+
+*Key venues for agent governance research, practice, and community discussion.*
+
+- [AAMAS](https://www.aamas-conference.org/) - International Conference on Autonomous Agents and Multi-Agent Systems.
+- [ACM FAccT](https://facctconference.org/) - ACM Conference on Fairness, Accountability, and Transparency in sociotechnical systems.
+- [AI Safety Camp](https://aisafety.camp/) - Research program for AI safety and alignment.
+- [Alignment Forum](https://www.alignmentforum.org/) - Community forum for AI alignment and safety research.
+- [Confidential Computing Summit](https://confidentialcomputingsummit.com/) - Annual conference on confidential computing, TEE hardware, and hardware-attested workloads. Primary venue for TRACE, cMCP, and Agent Manifest launch (June 2026, San Francisco).
+- [ICML](https://icml.cc/) - International Conference on Machine Learning, with safe and reliable ML tracks.
+- [NeurIPS](https://neurips.cc/) - Leading ML conference with AI safety, alignment, and trustworthy ML workshops.
+- [OWASP GenAI](https://genai.owasp.org/) - OWASP community for security guidance on generative AI and agentic applications.
+- [r/agentic](https://www.reddit.com/r/agentic/) - Reddit community for autonomous AI agents, tools, and governance.
+
+## Contributing
+
+Contributions welcome! Please read the [contribution guidelines](CONTRIBUTING.md) and submit a PR. Open-source governance tools, research papers, and community resources are especially welcome.
+
+Join the community on [Discord](https://discord.gg/grgzFEHgkj).
+
+---
+
+*Maintained by [Imran Siddique](https://github.com/imran-siddique), CPO at [OPAQUE Systems](https://opaque.co), creator of the [Agent Governance Toolkit](https://github.com/microsoft/agent-governance-toolkit), and contributor to OWASP ASI, CoSAI WS4, and the Agentic AI Foundation. The curator also maintains AGT, the agentrust-io tools (TRACE, cMCP, Agent Manifest), and the four component repos (Agent OS, AgentMesh, Agent SRE, Agent Hypervisor).*
