@@ -219,7 +219,7 @@ under the same published contribution criteria.
 
 *Conference talks, keynotes, and recorded sessions on agent governance, runtime enforcement, and hardware-attested execution. Speaker and venue are listed so the source of each claim is visible.*
 
-- [Agentic AI Is Running Your Infrastructure](https://www.youtube.com/watch?v=1Z_7hvy_-YE) - Mike Bursell, Confidential Computing Coalition. Keynote on what changes when agents operate infrastructure rather than assist people, and where confidential computing sits in that trust model. Confidential Computing Summit 2026.
+- [Agentic AI Is Running Your Infrastructure](https://www.youtube.com/watch?v=1Z_7hvy_-YE) - Mike Bursell, Confidential Computing Consortium. Keynote on what changes when agents operate infrastructure rather than assist people, and where confidential computing sits in that trust model. Confidential Computing Summit 2026.
 - [Agentic Zero Trust: at Rest, in Transit, and at Runtime](https://www.youtube.com/watch?v=x7j0D5VYUhw) - N. Polshakova (Solo.io) and J. Halley (Cisco) on extending zero-trust principles to the agent runtime, not just the network. Confidential Computing Summit 2026.
 - [Building Governed AI Agents with the Agent Governance Toolkit](https://www.youtube.com/watch?v=uDQBqp9Om5s) - Imran Siddique (OPAQUE Systems) walking through AGT's policy enforcement and audit model for enterprise deployments. GenAI Gurus, May 2026.
 - [From Trust to Proof: The Next Generation of AI Agent Governance](https://www.youtube.com/watch?v=uz4absejhHc) - Imran Siddique and Jason Lazarski (OPAQUE Systems) on the gap between controlling an agent and proving you controlled it, and how Agent Manifest, cMCP, and TRACE close it. July 2026.
