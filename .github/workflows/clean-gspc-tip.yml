@@ -1,0 +1,40 @@
+name: clean-gspc-tip
+on:
+  workflow_dispatch:
+  push:
+    branches: [add-csoai-gspc-rebased-tip]
+    paths: ['.trigger-clean-tip']
+permissions:
+  contents: write
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: CSOAI-ORG/awesome-ai-governance
+          ref: add-csoai-gspc-rebased-tip
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Rebuild branch on upstream main
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp README.md /tmp/good-readme.md
+          git remote add upstream https://github.com/agentrust-io/awesome-ai-governance.git
+          git fetch upstream main
+          git checkout -B add-csoai-gspc-rebased upstream/main
+          cp /tmp/good-readme.md README.md
+          rm -f .gspc-pr-marker .trigger-clean-tip .github/workflows/clean-gspc-tip.yml || true
+          git add -A
+          git status
+          git commit -m "Add Council of AI GSPC to Governance Frameworks"
+          BYTES=$(wc -c < README.md)
+          echo "README bytes=$BYTES"
+          test "$BYTES" -ge 40000
+          grep -q 'Council of AI' README.md
+          grep -q 'CCS (Correctover' README.md
+          grep -q '## Industry Reports' README.md
+          grep -q '## Contributing' README.md
+          git push -u origin add-csoai-gspc-rebased --force
