@@ -1,131 +1,170 @@
-# Awesome AI Agent Governance [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white&style=flat)](https://discord.gg/grgzFEHgkj)
+# Awesome AI Governance [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> A curated list of tools, frameworks, standards, and resources for governing autonomous AI agents, covering safety, trust, identity, observability, and compliance across the agent lifecycle.
+> A curated list of frameworks, tools, standards, and resources for governing AI systems responsibly.
 
-AI agents now hold real reach: email, CRMs, databases, financial systems. Guardrails at the content layer probably hold, but enterprises need to run on proof, not probability. This list tracks the tools and practices for making agents safe, auditable, and trustworthy in production.
+AI governance is no longer optional. As AI systems move from labs into production — powering decisions about credit, healthcare, hiring, and safety — organizations need concrete tools to ensure these systems are fair, transparent, accountable, and aligned with human values.
 
-Project support is recognized in [SPONSORS.md](SPONSORS.md). Sponsorship is
-separate from inclusion, ordering, editorial judgment, maintainership, and
-project governance; sponsored organizations and their competitors are evaluated
-under the same published contribution criteria.
+This list covers the full stack of AI governance: from high-level policy frameworks and risk management standards, to practical tooling for bias detection, explainability, model monitoring, and compliance. Whether you're a compliance officer implementing the EU AI Act, an ML engineer building responsible AI pipelines, or a researcher studying algorithmic fairness — you'll find something useful here.
+
+**Contributions welcome!** See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+---
 
 ## Contents
 
 - [Governance Frameworks](#governance-frameworks)
-- [End-to-End Governance: Software and Hardware](#end-to-end-governance-software-and-hardware)
-- [Policy as Code](#policy-as-code)
-- [LLM Safety & Guardrails](#llm-safety--guardrails)
-- [Agent Frameworks with Governance Features](#agent-frameworks-with-governance-features)
-- [Agent Identity & Attestation](#agent-identity--attestation)
-- [Observability & Monitoring](#observability--monitoring)
-- [Security Testing](#security-testing)
-- [Fairness & Bias Auditing](#fairness--bias-auditing)
-- [Standards & Specifications](#standards--specifications)
-- [Research Papers](#research-papers)
-- [Industry Reports & Guidance](#industry-reports--guidance)
-- [Talks & Videos](#talks--videos)
-- [Conferences & Communities](#conferences--communities)
+- [Risk Management](#risk-management)
+- [Standards & Regulations](#standards--regulations)
+- [Fairness & Bias](#fairness--bias)
+- [Explainability & Interpretability](#explainability--interpretability)
+- [Privacy & Security](#privacy--security)
+- [Model Evaluation & Benchmarking](#model-evaluation--benchmarking)
+- [Monitoring & Observability](#monitoring--observability)
+- [Audit & Compliance Tools](#audit--compliance-tools)
+- [Ethics & Responsible AI](#ethics--responsible-ai)
+- [Organizations & Initiatives](#organizations--initiatives)
+- [Research & Papers](#research--papers)
+- [Courses & Learning](#courses--learning)
+- [Books](#books)
+- [Newsletters & Communities](#newsletters--communities)
+
+---
 
 ## Governance Frameworks
 
-*Dedicated platforms and control planes for governing AI agent behavior, enforcing policies, and maintaining trust at runtime.*
+Frameworks that provide structured approaches to AI governance across the AI lifecycle.
 
-- [Agent Governance Toolkit (AGT)](https://github.com/microsoft/agent-governance-toolkit) - Production governance layer for autonomous agents with a policy enforcement kernel (<0.1ms p99), execution rings (Ring 0-3), cryptographic Merkle audit logs, and integrations across LangChain, CrewAI, AutoGen, Google ADK, and more. Python + .NET + Rust. Now stewarded by the Agentic AI Foundation. Provides the software governance layer that integrates with hardware-attested enforcement via cMCP. ★4000+
-- [Coral Server](https://github.com/Coral-Protocol/coral-server) - Agent coordination and trust server enabling safe multi-agent collaboration with structured communication protocols.
-- [Cordum](https://github.com/cordum-io/cordum) - Agent control plane providing governance, lifecycle management, and policy enforcement for autonomous agents.
-- [CCS (Correctover Conformance Shape)](https://github.com/DSHCorrectover/ccs-conformance-vectors) - Cryptographic runtime-verification receipts for agent tool calls: Ed25519 (RFC 8032) over RFC 8785 JCS canonical JSON, with prev-receipt hash chaining. MIT-licensed, language-neutral conformance vectors (10 vectors covering valid, tampered, algorithm-substitution, key-substitution, and chain-linked cases) let any implementation verify receipt signing and verification without a dependency on the reference implementation.
-- [Council of AI — GSPC](https://councilof.ai) - Independent AI-governance measurement (not certification). Living board **22 axis · 15 measured** (7 slots empty) via https://councilof.ai/api/gspc — quote `totals.public_count`. 4 of 14 behavioural comparison axes show a McNemar-separated leader; 10 are statistical ties. Methodology DOI [10.5281/zenodo.21991104](https://doi.org/10.5281/zenodo.21991104).
-- [ExecLayer](https://www.execlayer.io) - Deterministic execution governance kernel that evaluates AI-proposed actions against policy before execution, refuses out-of-bounds actions, and emits an Ed25519-signed receipt for every decision. Closed-source kernel; public live kernel at [kernel.execlayer.io](https://kernel.execlayer.io) and DOI-registered architecture papers including the Governed Execution Artifact Standard ([10.5281/zenodo.18749299](https://doi.org/10.5281/zenodo.18749299)).
-- [Gate22](https://github.com/aipotheosis-labs/gate22) - MCP gateway with role-based access control, audit logging, and fine-grained permission management for tool access.
-- [IBM mcp-context-forge](https://github.com/IBM/mcp-context-forge) - Enterprise MCP gateway with context-aware guardrails, request routing, and compliance controls.
-- [Invariant Guardrails](https://github.com/invariantlabs-ai/invariant) - Rule-based guardrails engine with policy-as-code, trace analysis, and real-time intervention for agentic applications.
-- [LiteLLM](https://github.com/BerriAI/litellm) - Unified LLM gateway with spend tracking, rate limiting, guardrails, and access controls across 100+ LLM providers.
-- [MARGINAL](https://github.com/SignalLayerLabs/Marginal) - Local-first runtime governor for AI coding agents that starts in Shadow Mode, records evidence for proven no-progress repetition, and enables narrow Codex tool enforcement only after repository-local evidence; Claude Code and OpenCode integrations are observe-only.
-- [MREA](https://github.com/JairValle/mrea-framework) - Multi-role enterprise agent governance framework with separate Architect, Auditor, and Implementer roles, enforcing human approval gates and independent audits to prevent self-validation bias in AI-assisted development.
-- [Proofpane](https://proofpane.com) - Runtime governance gateway for AI coding agents and MCP clients, enforcing policy gates and DLP redaction in the execution path with a hash-chained, offline-verifiable audit. Closed-source (proprietary daemon); [public reference architecture](https://github.com/Proofpane/architecture) under CC BY 4.0.
-- [Regulus](https://github.com/neul-labs/regulus) - EU & UK compliance plane for Google ADK encoding 10 regulations (EU AI Act, GDPR, DORA, NIS2, EHDS, UK GDPR, FCA SYSC, PRA SS1/23, PRA SS2/21, NHS DSPT) and 6 governance frameworks as runtime ADK `BasePlugin` profiles; emits hash-chained audit envelopes with GRC adapters (ServiceNow IRM, OneTrust, MetricStream).
-- [SEMAPRAX](https://wavect.io/semaprax/) - Apache-2.0 experimental systems programming language ([source](https://github.com/wavect/semaprax)) whose compiler gives declarations stable semantic identities, independently replays patch evidence before supported mutations, and models explicit capability and authority boundaries for agent-driven code changes. v0.2 pre-alpha; no built-in model, autonomous agent, transport, keys, or production authority.
-- [ScopeBlind protect-mcp](https://github.com/ScopeBlind/scopeblind-gateway) - Security gateway for MCP servers with Cedar policy enforcement (AWS Cedar via WASM), Ed25519-signed decision receipts, issuer-blind spending authority (VOPRF), and multi-agent swarm tracking. [Merged into AGT](https://github.com/microsoft/agent-governance-toolkit/pull/667).
-- [TrinityGuard](https://github.com/AI45Lab/TrinityGuard) - Multi-agent safety framework with three-layer defense for detecting and preventing unsafe agent behaviors.
-- [WitnessOS](https://github.com/narko4u/witnessos) - Runtime governance layer producing evidence-grade receipts for every agent action, with policy evaluation before execution and a tamper-evident audit chain.
+- [NIST AI Risk Management Framework (AI RMF 1.0)](https://www.nist.gov/itl/ai-risk-management-framework) - The gold standard US framework. Four core functions: Govern, Map, Measure, Manage. Freely available with companion playbook and profiles.
+- [OECD AI Principles](https://oecd.ai/en/ai-principles) - The first intergovernmental standard on AI (2019). Adopted by 46+ countries. Five value-based principles and five recommendations for policymakers.
+- [UNESCO Recommendation on the Ethics of AI](https://www.unesco.org/en/artificial-intelligence/recommendation-ethics) - The first global standard-setting instrument on AI ethics. Adopted by 193 member states. Covers human rights, environment, gender, and data governance.
+- [Microsoft Responsible AI Standard v2](https://www.microsoft.com/en-us/ai/responsible-ai) - Practical goals and requirements across six principles: fairness, reliability & safety, privacy & security, inclusiveness, transparency, accountability.
+- [Google AI Principles](https://ai.google/responsibility/principles/) - Seven principles guiding Google's AI development, with published progress reviews and governance structures.
+- [IBM AI Governance Framework](https://www.ibm.com/watson/responsible-ai) - Enterprise framework covering ethics boards, risk assessment methodologies, and AI FactSheets.
+- [Singapore Model AI Governance Framework](https://www.pdpc.gov.sg/help-and-resources/2020/01/model-ai-governance-framework) - Practical guidance for private sector organizations. Includes implementation and self-assessment guide.
+- [Canada Algorithmic Impact Assessment (AIA)](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html) - Mandatory questionnaire for Canadian federal agencies deploying automated decision systems. Scores impact level and recommends mitigations.
+- [Council of AI GSPC](https://doi.org/10.5281/zenodo.18383474) - Production governance scorecard: 22 axis · 15 measured. Open methodology + public score artifacts (Zenodo DOI).
+- [Beijing AI Principles](https://www.baai.ac.cn/news/beijing-ai-principles-en.html) - Developed by the Beijing Academy of AI. Covers research, development, use, and governance of AI.
+- [Tokyo Guidelines for AI Governance](https://www.soumu.go.jp/main_sosiki/joho_tsusin/eng/presentation.html) - Japan's Soft Law approach to AI governance emphasizing human-centric AI.
 
-## End-to-End Governance: Software and Hardware
+## Risk Management
 
-*Tools and platforms that combine software policy enforcement with hardware-attested execution. The software layer (Cedar policy, audit logs, agent identity) is measured into a Trusted Execution Environment so that the governance claims cannot be forged by a privileged operator, a compromised runtime, or a supply chain attack. The result is a compliance artifact that any third party can verify offline without trusting the operator.*
+Tools and methodologies for identifying, assessing, and mitigating AI risks.
 
-*The stack: AGT enforces Cedar policies at the software layer. cMCP is the secure, confidential way to run MCP, carrying those policies into the TEE. cA2A is the secure profile for agent-to-agent (A2A) delegation. TRACE records the attested outcome. Agent Manifest binds all ten deployment artifacts into a hardware-sealed identity document. OPAQUE Systems provides the managed TEE runtime.*
+- [MIT AI Risk Repository](https://airisk.mit.edu/) - Living database of 1000+ AI risks extracted from literature, taxonomized into causal and domain frameworks. Searchable and regularly updated.
+- [AI Incident Database (AIID)](https://incidentdatabase.ai/) - Crowdsourced collection of AI failure incidents. Searchable by harm type, sector, and system. Essential for risk identification.
+- [AI Vulnerability Database (AVID)](https://avidml.org/) - Structured vulnerability database for AI systems covering security, ethics, and performance failures. Includes enumeration and taxonomy.
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) - The definitive list of critical vulnerabilities in LLM apps: prompt injection, data leakage, supply chain, insecure output handling, and more.
+- [OWASP AI Exchange](https://owaspai.org/) - Comprehensive AI security and privacy guidance. Covers threat modeling, controls, and risk assessment for AI systems.
+- [Giskard](https://github.com/Giskard-AI/giskard) - Open-source vulnerability scanner for AI models. Automatically detects performance, bias, and security issues. Python library + CI/CD integration.
+- [Robust Intelligence (CISCO)](https://www.robustintelligence.com/) - AI firewall and continuous validation platform. Tests models against adversarial attacks, data drift, and performance degradation.
+- [Adversa AI](https://adversa.ai/) - Adversarial robustness testing and red-teaming platform for AI/ML systems.
+- [Microsoft Counterfit](https://github.com/Azure/counterfit) - Open-source automation tool for security testing AI systems. Supports multiple attack frameworks (ART, TextAttack, etc.).
+- [IBM Adversarial Robustness Toolbox (ART)](https://github.com/Trusted-AI/adversarial-robustness-toolbox) - Python library with adversarial attacks, defenses, and robustness metrics for all major ML frameworks.
+- [CleverHans](https://github.com/cleverhans-lab/cleverhans) - Adversarial example library for benchmarking ML systems against attacks. Supports JAX, PyTorch, and TF.
+- [AI Verify](https://aiverify.sg/) - Singapore's open-source AI governance testing framework. Technical tests + process checks aligned to their Model Governance Framework.
 
-- [Agent Manifest](https://github.com/agentrust-io/agent-manifest) - Signs all 10 agent deployment artifacts (system prompt, policy bundle, model identity, tool schemas, RAG corpus, memory baseline, decision trace, A2A delegation chain, build provenance, HITL approvals) into a single tamper-evident record. Hardware attestation via TPM, AMD SEV-SNP, Intel TDX, or OPAQUE Managed Runtime. Four conformance levels mapped to EU AI Act Art. 13-15, DORA, HIPAA, and FedRAMP. 197 conformance tests. Python + TypeScript. Developer preview, launching June 23 2026.
-- [cMCP (Confidential MCP Gateway)](https://github.com/agentrust-io/cmcp) - The secure, confidential way to run MCP: an MCP gateway running inside a TEE. The Cedar policy bundle is measured into hardware attestation before any code runs; the signing key never leaves the enclave. Every tool call produces a signed GatewayClaim bound to the hardware measurement. Supports TPM, AMD SEV-SNP, Intel TDX, NVIDIA H100 Confidential Compute, and OPAQUE Managed Runtime. Developer preview, launching June 23 2026.
-- [cA2A (Confidential A2A)](https://github.com/agentrust-io/ca2a) - The secure, confidential profile for the Agent2Agent (A2A) protocol, where A2A's Signed Agent Card verifies only a domain owner. Adds attested, attenuated delegation (each hop's authority is a provable subset of its parent's), runtime attestation of the peer, a sealed peer channel binding the task payload to the peer's attested measurement, and an offline-verifiable provenance record per hop. Reuses the delegation semantics from Agent Manifest and the TEE and policy primitives from cMCP. Python, alpha; installable with `pip install --pre ca2a-runtime`.
-- [OPAQUE Systems](https://opaque.co) - Managed TEE runtime providing the highest-assurance hardware backend for cMCP, TRACE, and Agent Manifest. Handles TEE provisioning, attestation key lifecycle, and enclave deployment. Produces TRACE records signed by OPAQUE's hardware root of trust. Commercial.
-- [TRACE (Trust Runtime Attestation and Compliance Evidence)](https://github.com/agentrust-io/trace-spec) - Open attestation standard and Python SDK for agentic AI governance. Each agent run produces a signed EAT/JWT trust record binding model identity, policy version, TEE hardware evidence, and tool call transcript into a single artifact verifiable offline without calling the operator. Built on IETF RATS (RFC 9334), EAT (RFC 9711), SCITT, SLSA, and SPIFFE. Spec v0.1, launching June 23 2026.
-- [SourceryKit](https://github.com/ProvablyAI/sourcerykit) - Verifies an agent's outbound requests and MCP handoffs against a source of truth using zero-knowledge proofs, so a call only goes out if the agent's claims check out. Hooks into the HTTP libraries, logs every outbound call, and blocks endpoints not on the trusted allow-list. Python, BSL 1.1 (source-available), with a hosted backend that runs the proof and source-of-truth check.
+## Standards & Regulations
 
-## Policy as Code
+Key regulatory frameworks and technical standards shaping AI governance globally.
 
-*Language-level tools for expressing, validating, and enforcing authorization policies applicable to agent capability bounds, tool access, and data permissions.*
+### Regulations
 
-- [Casbin](https://github.com/casbin/casbin) - Cross-language authorization library supporting ACL, RBAC, and ABAC models. Available in Go, Python, Java, and more.
-- [Cedar](https://github.com/cedar-policy/cedar) - Amazon's policy language for fine-grained, type-safe access control. Used as the policy engine in the Agent Governance Toolkit. Fast, formally verified, and human-readable.
-- [GOPAL](https://github.com/Principled-Evolution/gopal) - Apache-2.0 library of 85 Rego policies encoding AI-governance regulations (EU AI Act, NIST AI RMF, ICAO/FAA/EASA aviation, FERPA/COPPA, fair lending) as executable allow/deny checks for the OPA engine, versioned per framework with allow/deny tests in CI.
-- [Open Policy Agent (OPA)](https://github.com/open-policy-agent/opa) - CNCF general-purpose policy engine. Decouples policy decisions from application logic using the Rego language. Widely deployed for Kubernetes and API authorization.
-- [SpiceDB](https://github.com/authzed/spicedb) - Google Zanzibar-inspired database for fine-grained, relationship-based authorization. Useful for cross-agent and multi-tenant permission modeling.
+- [EU AI Act](https://artificialintelligenceact.eu/) - The world's first comprehensive AI regulation. Risk-based approach: prohibited, high-risk, limited-risk, minimal-risk. Full applicability 2026/2027.
+- [EU AI Act Implementation Timeline](https://artificialintelligenceact.eu/implementation-timeline/) - Track key dates for prohibitions, GPAI obligations, high-risk requirements, and penalties.
+- [US Executive Order 14110](https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/) - Biden's EO on Safe, Secure, and Trustworthy AI. Directs NIST, DoD, DOE, and other agencies on AI safety standards.
+- [US OMB Memo M-24-10](https://www.whitehouse.gov/wp-content/uploads/2024/03/M-24-10-Advancing-Governance-Management-and-Accountability-in-AI-Agency-Use.pdf) - Requirements for US federal agencies on AI governance, including impact assessments and rights-impacting AI.
+- [UK AI Safety Institute](https://www.aisi.gov.uk/) - Government body for evaluating advanced AI systems. Publishes safety research and evaluation methodologies.
+- [China Interim Measures for Generative AI](http://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm) - Cyberspace Administration of China rules for generative AI services. Requires security assessments and content labeling.
+- [Brazil AI Bill](https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2236340) - Proposed comprehensive AI legislation following a risk-based approach similar to the EU AI Act.
+- [Canada AIDA](https://ised-isde.canada.ca/site/innovation-better-canada/en/artificial-intelligence-and-data-act) - Artificial Intelligence and Data Act. Part of Bill C-27. Regulates high-impact AI systems.
+- [Colorado SB 24-205](https://leg.colorado.gov/bills/sb24-205) - First comprehensive US state AI law. Requires developers and deployers of high-risk AI to use reasonable care to avoid algorithmic discrimination.
 
-## LLM Safety & Guardrails
+### Technical Standards
 
-*Input/output filtering, content safety, and prompt protection for LLM-powered agents.*
+- [ISO/IEC 42001:2023](https://www.iso.org/standard/81284.html) - First international AI management system standard. Certifiable. Covers policy, risk assessment, and continuous improvement for AI systems.
+- [ISO/IEC 23894:2023](https://www.iso.org/standard/77304.html) - AI risk management guidance standard. Complements ISO 31000 for AI-specific risks.
+- [ISO/IEC 23053:2022](https://www.iso.org/standard/74438.html) - Framework for AI systems using ML. Establishes common terminology and understanding.
+- [ISO/IEC TR 24028:2020](https://www.iso.org/standard/77608.html) - Overview of trustworthiness in AI systems covering reliability, transparency, privacy, and accountability.
+- [IEEE 7000-2021](https://standards.ieee.org/ieee/7000/6781/) - Model process for addressing ethical concerns during system design. Integrates ethics into engineering lifecycle.
+- [IEEE 7001-2021](https://standards.ieee.org/ieee/7001/6929/) - Transparency of autonomous systems. Measurable levels of transparency for different stakeholders.
+- [IEEE CertifaiEd](https://engagestandards.ieee.org/ieeecertifaied.html) - Certification program for AI ethics based on IEEE ethics standards.
+- [NIST AI 100-1](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf) - AI RMF 1.0 official publication.
+- [NIST AI 600-1](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) - Generative AI Profile for the AI RMF. Specific risks and actions for GenAI systems.
+- [CEN-CENELEC JTC 21](https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/) - European standards body developing harmonized standards to support EU AI Act conformity.
 
-- [ai-evaluation](https://github.com/future-agi/ai-evaluation) - Open-source LLM evaluation framework with 50+ metrics, LLM-as-Judge, and guardrail scanners (jailbreak, PII, injection).
-- [Arthur Shield](https://www.arthur.ai/product/shield) - Firewall for LLMs that detects hallucinations, toxicity, PII leakage, and prompt injection in real time.
-- [Guardrails AI](https://github.com/guardrails-ai/guardrails) - Framework for structural, type, and quality guarantees on LLM outputs. Guardrails Hub provides community validators.
-- [Hyperion](https://github.com/Salesforce/hyperion) - Framework for evaluating and improving robustness of LLM-based agents against adversarial attacks.
-- [Lakera Guard](https://www.lakera.ai/) - Real-time API for detecting prompt injections, data leakage, toxic content, and other LLM security threats.
-- [LLM Guard](https://github.com/protectai/llm-guard) - Input and output scanners covering toxicity, PII, prompt injection, invisible text, and code detection.
-- [Meta Llama Guard](https://github.com/meta-llama/PurpleLlama) - Safety classifier models for filtering unsafe LLM inputs and outputs. Part of Meta's Purple Llama safety suite.
-- [NVIDIA NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) - Open-source toolkit for adding programmable guardrails to LLM-based conversational systems using Colang.
-- [Rebuff](https://github.com/protectai/rebuff) - Prompt injection detection using multi-layer defense: heuristics, LLM analysis, and canary tokens.
-- [Vigil](https://github.com/deadbits/vigil-llm) - LLM security scanner for detecting prompt injections using embedding similarity, heuristics, and canary tokens.
+## Fairness & Bias
 
-## Agent Frameworks with Governance Features
+Tools and research for detecting, measuring, and mitigating bias in AI systems.
 
-*Agent development frameworks that include governance, safety, or policy hooks.*
+### Open Source Tools
 
-- [AgentScope](https://github.com/modelscope/agentscope) - Multi-agent platform with fault tolerance, agent-level monitoring, and configurable message validation.
-- [AutoGen](https://github.com/microsoft/autogen) - Multi-agent conversation framework with human oversight, code execution sandboxing, and conversation policies.
-- [CorvinOS](https://github.com/CorvinLabs/CorvinOS) - Self-hosted agentic OS connecting local and cloud models to Discord, Telegram, WhatsApp, Slack, and Email, with a fail-closed GDPR consent gate, hash-chained audit log, and bot-disclosure controls. Python, Apache-2.0.
-- [CrewAI](https://github.com/crewAIInc/crewAI) - Multi-agent orchestration with role-based agents, task delegation, and configurable guardrails.
-- [Dify](https://github.com/langgenius/dify) - LLM app development platform with content moderation, rate limiting, and annotation logging.
-- [Google Agent Development Kit (ADK)](https://github.com/google/adk-python) - Google's agent framework with safety callbacks, evaluation tools, and multi-agent session management.
-- [Google Sovereign Agent Mesh (SAM)](https://github.com/google/sam) - Apache-2.0 agent-mesh project with cryptographic node identities, authenticated peer connections and packets, discovery, authorization policies, and MCP sidecar routing. The repository states that it is not an officially supported Google product.
-- [Haystack](https://github.com/deepset-ai/haystack) - End-to-end NLP framework with pipeline-based architecture supporting content filtering and validation.
-- [LangChain](https://github.com/langchain-ai/langchain) - Composable framework with callbacks, tracing, and moderation chains for LLM applications.
-- [LangGraph](https://github.com/langchain-ai/langgraph) - Stateful, multi-actor agent framework with human-in-the-loop and persistence built in.
-- [LlamaIndex](https://github.com/run-llama/llama_index) - Data framework with observability callbacks, evaluation modules, and structured output guarantees.
-- [Microsoft Agent Framework (MAF)](https://github.com/microsoft/agent-framework) - Microsoft's multi-agent orchestration framework for Python and .NET, with migration paths from Semantic Kernel and AutoGen. Governance-relevant pieces are human-in-the-loop workflow steps, checkpointing, and built-in OpenTelemetry tracing.
-- [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) - Official OpenAI SDK with built-in guardrails, input/output validation, and handoff controls.
-- [PydanticAI](https://github.com/pydantic/pydantic-ai) - Agent framework with type-safe tool definitions, structured outputs, and dependency injection.
-- [Semantic Kernel](https://github.com/microsoft/semantic-kernel) - Microsoft's AI orchestration SDK with plugin permission models, function filtering, and responsible AI hooks.
-- [smolagents](https://github.com/huggingface/smolagents) - Hugging Face's lightweight agent library with sandboxed code execution and security controls.
+- [Fairlearn](https://github.com/fairlearn/fairlearn) - Microsoft's Python toolkit for assessing and improving fairness. Metrics, mitigation algorithms, and visualization dashboards.
+- [AIF360](https://github.com/Trusted-AI/AIF360) - IBM's comprehensive bias detection and mitigation toolkit. 70+ fairness metrics, 10+ mitigation algorithms. Supports pre/in/post-processing.
+- [Aequitas](https://github.com/dssg/aequitas) - University of Chicago bias audit toolkit. Generates bias reports for ML models across protected groups. Used by governments.
+- [What-If Tool](https://pair-code.github.io/what-if-tool/) - Google's interactive visual tool for probing ML models. Explore counterfactuals, fairness metrics, and feature importance without coding.
+- [Fairness Indicators](https://github.com/tensorflow/fairness-indicators) - TensorFlow tool for computing fairness metrics at scale. Integrates with TensorBoard.
+- [LiFT](https://github.com/linkedin/LiFT) - LinkedIn Fairness Toolkit. Scala/Spark library for measuring and mitigating bias in large-scale ML workflows.
+- [Themis](https://github.com/LASER-UMASS/Themis) - Discrimination testing tool for software systems. Measures causal and group discrimination.
+- [RESPONSIBLEAI](https://github.com/microsoft/responsible-ai-toolbox) - Microsoft's Responsible AI Toolbox. Integrated dashboard combining Fairlearn, InterpretML, Error Analysis, and Causal Inference.
+- [holisticai](https://github.com/holistic-ai/holisticai) - Bias and mitigation toolkit with focus on practical industry use cases. Clean API covering classification, regression, clustering, and recommendation.
 
-## Agent Identity & Attestation
+### Datasets for Bias Testing
 
-*Protocols and tools for establishing cryptographic identity, trust, and verifiable provenance for AI agents. For hardware-attested agent identity and compliance records, see [End-to-End Governance: Software and Hardware](#end-to-end-governance-software-and-hardware).*
+- [Adult (Census Income)](https://archive.ics.uci.edu/dataset/2/adult) - Classic fairness benchmark. Predict income with gender/race as sensitive attributes.
+- [COMPAS](https://github.com/propublica/compas-analysis) - ProPublica's recidivism dataset. The dataset that sparked the modern algorithmic fairness debate.
+- [German Credit](https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data) - Credit risk dataset with gender and age as potential sensitive attributes.
+- [MIMIC-IV](https://mimic.mit.edu/) - Critical care dataset used extensively for healthcare AI fairness research.
+- [HateXplain](https://huggingface.co/datasets/Hate-speech-CNERG/hatexplain) - Hate speech detection dataset with human rationales and target group annotations.
+- [Bias in Bios](https://github.com/Microsoft/biosbias) - Biography dataset for studying gender bias in occupation classification.
 
-- [Agent Card / AI Card](https://google.github.io/A2A/#/documentation?id=agent-card) - Specification for machine-readable agent capability and policy metadata, enabling discovery and trust decisions.
-- [Agent Passport System](https://github.com/aeoess/agent-passport-system) - Apache-2.0 protocol for agent identity, scoped delegation with monotonic narrowing, runtime enforcement, and signed action receipts. TypeScript and Python SDKs; active IETF Internet-Draft (draft-pidlisnyi-aps).
-- [Nobulex](https://github.com/arian-gogani/nobulex) - Bilateral receipt primitive for tamper-evident agent audit trails: two Ed25519 signatures per action (pre- and post-execution), hash-chained via JCS canonicalization (RFC 8785). The receipt-signing approach is [merged into AGT](https://github.com/microsoft/agent-governance-toolkit/pull/1333). MIT licensed.
-- [SPIFFE/SVID](https://spiffe.io/) - Secure Production Identity Framework for Everyone. Cryptographic workload identity applicable to agent-to-agent authentication.
-- [W3C Decentralized Identifiers (DIDs)](https://www.w3.org/TR/did-core/) - W3C standard for decentralized, self-sovereign identifiers applicable to durable agent identity without centralized registries.
+## Explainability & Interpretability
 
-## Observability & Monitoring
+Tools for understanding and explaining AI model decisions.
 
-*Platforms for tracing, monitoring, evaluating, and debugging AI agent behavior.*
+### Model-Agnostic Methods
 
-- [AgentOps](https://github.com/AgentOps-AI/agentops) - Agent observability SDK with session replay, LLM cost tracking, compliance monitoring, and failure detection.
-- [Arize / Phoenix](https://github.com/Arize-ai/phoenix) - Open-source AI observability with LLM tracing, evaluation, retrieval analysis, and experiment tracking.
-- [Braintrust](https://www.braintrust.dev/) - Evaluation and monitoring platform with logging, scoring, and experiment comparison.
-- [Datadog LLM Observability](https://www.datadoghq.com/product/llm-observability/) - Enterprise monitoring with trace clustering, cost attribution, and quality scoring.
-- [Future AGI](https://github.com/future-agi/future-agi) - Open-source self-hostable end-to-end agent engineering platform with tracing, evals, guardrails, and gateway.
-- [Helicone](https://github.com/Helicone/helicone) - Open-source LLM observability with request logging, cost tracking, caching, and rate limiting.
-- [Jaeger](https://www.jaegertracing.io/) - Open-source distributed tracing for monitoring agent workflows and debugging latency across services.
+- [SHAP](https://github.com/shap/shap) - The gold standard for feature attribution. Unified framework based on Shapley values. Works with any model. TreeSHAP is exceptionally fast.
+- [LIME](https://github.com/marcotcr/lime) - Local Interpretable Model-agnostic Explanations. Explains individual predictions by fitting local surrogate models.
+- [Anchors](https://github.com/marcotcr/anchor) - High-precision model-agnostic explanations. Finds IF-THEN rules that "anchor" a prediction.
+- [Alibi](https://github.com/SeldonIO/alibi) - Seldon's open-source Python library covering black-box and white-box explanations, counterfactuals, and influence functions.
+- [InterpretML](https://github.com/interpretml/interpret) - Microsoft's toolkit. Includes Explainable Boosting Machine (EBM) — an interpretable glass-box model that rivals black-box accuracy.
+- [DALEX](https://github.com/ModelOriented/DALEX) - Model-agnostic exploration and explanation. Strong on comparative analysis across models. R and Python.
+- [OmniXAI](https://github.com/salesforce/OmniXAI) - Salesforce's comprehensive explainability library. Supports tabular, vision, NLP, and time-series. Multiple explanation methods in one API.
+
+### Model-Specific & Neural Methods
+
+- [Captum](https://github.com/pytorch/captum) - PyTorch's official interpretability library. Integrated gradients, occlusion, GradCAM, Layer Conductance, and more.
+- [Lucent](https://github.com/tensorflow/lucid) - Feature visualization for neural networks. Descendant of GoogLean's Lucid library.
+- [Transformer Interpretability](https://github.com/hila-chefer/Transformer-Explainability) - Attention-based and gradient-based explanation methods specifically for transformer architectures.
+- [BertViz](https://github.com/jessevig/bertviz) - Interactive visualization of attention in transformer models (BERT, GPT-2, etc.).
+- [ecco](https://github.com/jalammar/ecco) - NLP model introspection. Visualizes input saliency, layer evolution, and neuron activations.
+
+### Explanation Management
+
+- [AI Explainability 360](https://github.com/Trusted-AI/AIX360) - IBM's toolkit with 10+ explanation algorithms and explanation metrics. Includes formal taxonomy of explainability.
+- [Quantus](https://github.com/understandable-machine-intelligence-lab/Quantus) - Evaluation framework for explanation quality. 30+ metrics measuring faithfulness, robustness, localization, and complexity.
+
+## Privacy & Security
+
+Tools and frameworks for privacy-preserving AI and AI security.
+
+### Privacy-Preserving ML
+
+- [Opacus](https://github.com/pytorch/opacus) - PyTorch library for training models with Differential Privacy. Maintained by Meta AI.
+- [TensorFlow Privacy](https://github.com/tensorflow/privacy) - Differential privacy tools for TensorFlow. DP-SGD Optimizer and privacy accounting.
+- [PySyft](https://github.com/OpenMined/PySyft) - OpenMined's stack for private, secure computation. Federated learning, differential privacy, and encrypted computation.
+- [Flower](https://flower.ai/) - Friendly federated learning framework. Works with PyTorch, TensorFlow, JAX, Hugging Face.  Framework-agnostic.
+- [NVIDIA FLARE](https://github.com/NVIDIA/NVFlare) - Enterprise federated learning. Used in healthcare (including multi-hospital studies). Privacy filters and secure aggregation.
+- [CrypTen](https://github.com/facebookresearch/CrypTen) - Privacy-preserving ML framework by Meta using secure multiparty computation.
+- [TF Encrypted](https://github.com/tf-encrypted/tf-encrypted) - Encrypted deep learning in TensorFlow. Secure computation with cryptographic protocols.
+- [duet](https://github.com/OpenMined/PySyft) - OpenMined's peer-to-peer privacy-preserving data science framework (part of PySyft ecosystem).
+
+### AI Security
+
+- [Garak](https://github.com/NVIDIA/garak) - LLM vulnerability scanner. Probes for hallucination, data leakage, prompt injection, jailbreaks, and toxicity. "nmap for LLMs."
+- [Promptfoo](https://github.com/promptfoo/promptfoo) - LLM eval and red-teaming CLI. Test prompts against security vulnerabilities, compare models, and catch regressions.
+- [Rebuff](https://github.com/protectai/rebuff) - Prompt injection detection SDK. Multi-layer defense: heuristics, LLM-based detection, and vector DB canary tokens.
+- [LLM Guard](https://github.com/protectai/llm-guard) - Security toolkit for LLM interactions. Input/output sanitization, PII detection, injection prevention, and toxicity filtering.
+- [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) - NVIDIA's toolkit for adding programmable guardrails to LLM-based conversational systems.
+- [Guardrails AI](https://github.com/guardrails-ai/guardrails) - Input/output validation framework. Define structured contracts for LLM outputs with automatic correction.
+- [Lakera Guard](https://www.lakera.ai/) - Real-time AI firewal
