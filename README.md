@@ -143,3 +143,31 @@ under the same published contribution criteria.
 
 - [Commit](https://getcommit.dev) - Supply chain trust scoring for npm, PyPI, Cargo, and Go packages. Scores maintainer concentration, OIDC publisher gaps, and release consistency to surface high-risk dependency patterns that vulnerability databases miss. CLI, GitHub Action, IDE hooks, REST API, and MCP server.
 - [Counterfit](https://github.com/Azure/counterfit) - Azure's tool for assessing ML model security through adversarial attacks.
+- [CyberSecEval](https://github.com/meta-llama/PurpleLlama/tree/main/CybersecurityBenchmarks) - Meta's benchmark suite for LLM cybersecurity risks including insecure code generation and prompt extraction.
+- [Garak](https://github.com/NVIDIA/garak) - LLM vulnerability scanner from NVIDIA. Probes for hallucination, data leakage, prompt injection, toxicity, and more.
+- [HouYi](https://github.com/LLMSecurity/HouYi) - Prompt injection attack framework for testing LLM-integrated application security boundaries.
+- [mcp-evidence-validator](https://github.com/narko4u/mcp-evidence-validator) - Reference implementation of SHA-256 evidence chains for MCP agents: verifies declared tool contracts against observed runtime behavior (declared vs observed). Apache-2.0, OpenSSF Best Practices badge.
+- [PyRIT](https://github.com/Azure/PyRIT) - Microsoft's Python Risk Identification Toolkit for red-teaming generative AI systems with automated attack strategies.
+- [Snyk Agent Scan](https://github.com/snyk/agent-scan) - Security scanner for AI agents and MCP servers. Detects vulnerabilities in tool configurations, permissions, and data flows.
+
+## Fairness & Bias Auditing
+
+*Toolkits for auditing AI-driven decision systems for algorithmic bias and measuring the effect of mitigation.*
+
+- [Fair Code](https://github.com/yakew7/Fair-Code) - Audits real-world-style AI decision systems (criminal justice, hiring, lending, insurance, welfare, hospital readmission, tenant screening) for algorithmic bias, pairing a biased baseline with a mitigated version and measured before/after fairness metrics.
+
+## Standards & Specifications
+
+*Protocols, specifications, and regulatory frameworks relevant to agent governance and interoperability.*
+
+- [Agent-to-Agent Protocol (A2A)](https://github.com/google/A2A) - Google-led open protocol for inter-agent communication, task delegation, and capability discovery.
+- [Universal Commerce Protocol (UCP)](https://github.com/Universal-Commerce-Protocol/ucp) - Open protocol for interoperable agentic commerce, including checkout operations and response-carried request constraints that can narrow what a client is permitted to submit.
+- [ACI/AIP/AJSON](https://github.com/narko4u/aci-spec) - Open standards for agent interoperability and governance: Agent Communication Interface (ACI), Agent Interaction Protocol (AIP), and Agent JSON (AJSON) machine-readable agent manifests for discovery, delegation, and governance.
+- [CoSAI Risk Map v1](https://github.com/cosai-oasis/secure-ai-tooling) - Coalition for Secure AI's component-level risk taxonomy for agentic AI systems: 23 components, 35 controls, 36 risks (including 6 agentic-specific), 10 personas, 8 lifecycle stages. Cross-walks to MITRE ATLAS, NIST AI RMF, STRIDE, OWASP LLM Top 10, ISO 22989, and EU AI Act. Launched June 2026.
+- [CSA Agentic Trust Framework](https://github.com/massivescale-ai/agentic-trust-framework) - Cloud Security Alliance / MassiveScale framework defining 5 Core Elements (Identity, Behavior, Data Governance, Segmentation, Incident Response) with 25 requirements across a 4-tier maturity model (Intern, Junior, Senior, Principal). Public Review Draft v0.9.1 (April 2026). Two conformance tiers: ATF Compatible / ATF Certified.
+- [CSA MCP Security Resource Center](https://modelcontextprotocol-security.io/) - Cloud Security Alliance community project for securing MCP servers and AI agents: hardening guides, audit database, and vulnerability database.
+- [CSA Non-Human Identity & Agentic AI Governance v1](https://labs.cloudsecurityalliance.org/research/csa-whitepaper-nonhuman-identity-agentic-ai-governance-v1-cs/) - Cloud Security Alliance whitepaper recommending a 6-field NHI registry (Identity, Owning Team, Business Purpose, Systems Accessed, Privilege Scope, Expiration/Review Date) for managing non-human and agentic identities. Published May 2026.
+- [EU AI Act](https://artificialintelligenceact.eu/) - EU regulation classifying AI systems by risk with requirements for transparency, human oversight, and governance.
+- [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) - Open protocol connecting LLMs to tools and data sources with standardized server/client architecture.
+- [NIST AI 600-1 (GenAI Profile)](https://www.nist.gov/itl/ai-risk-management-framework) - NIST profile of the AI Risk Management Framework focused on generative AI, enumerating 12 risk categories (CBRN, Confabulation, Dangerous Content, Data Privacy, Environmental Impacts, Harmful Bias, Human-AI Configuration, Information Integrity, Information Security, Intellectual Property, Obscene Content, Value Chain). 200+ suggested actions across Govern/Map/Measure/Manage functions. Published July 2024.
+- [NIST AI Risk Management Framework](https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence) - NIST framework for managing AI risk including governance and accountability.
