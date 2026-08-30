@@ -96,7 +96,7 @@ under the same published contribution criteria.
 - [CorvinOS](https://github.com/CorvinLabs/CorvinOS) - Self-hosted agentic OS connecting local and cloud models to Discord, Telegram, WhatsApp, Slack, and Email, with a fail-closed GDPR consent gate, hash-chained audit log, and bot-disclosure controls. Python, Apache-2.0.
 - [CrewAI](https://github.com/crewAIInc/crewAI) - Multi-agent orchestration with role-based agents, task delegation, and configurable guardrails.
 - [Dify](https://github.com/langgenius/dify) - LLM app development platform with content moderation, rate limiting, and annotation logging.
-- [Google Agent Development Kit (ADK)](https://github.com/google/adk-python) - Google's agent framework with safety callbacks, evaluation tools, and multi-agent session monitoring.
+- [Google Agent Development Kit (ADK)](https://github.com/google/adk-python) - Google's agent framework with safety callbacks, evaluation tools, and multi-agent session management.
 - [Google Sovereign Agent Mesh (SAM)](https://github.com/google/sam) - Apache-2.0 agent-mesh project with cryptographic node identities, authenticated peer connections and packets, discovery, authorization policies, and MCP sidecar routing. The repository states that it is not an officially supported Google product.
 - [Haystack](https://github.com/deepset-ai/haystack) - End-to-end NLP framework with pipeline-based architecture supporting content filtering and validation.
 - [LangChain](https://github.com/langchain-ai/langchain) - Composable framework with callbacks, tracing, and moderation chains for LLM applications.
